@@ -21,7 +21,7 @@ images = {
 if empresa:
     image_file = images.get(empresa)
     if image_file and os.path.isfile(image_file):
-        st.sidebar.image(image_file, caption=empresa.upper(), use_column_width=True)
+        st.sidebar.image(image_file, use_column_width=True)
     else:
         st.sidebar.error(f"Imagem não encontrada: {image_file}")
 
