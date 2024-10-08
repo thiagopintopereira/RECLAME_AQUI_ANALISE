@@ -62,37 +62,34 @@ if empresa:
 
   
 
-    # Agrupar as reclamações por data
-    reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
-    # Agrupar as reclamações por estado
-    reclamacoes_por_estado = df.groupby(df['ESTADO'].dt.date)['DESCRICAO'].count()
+   # Agrupar as reclamações por data
+reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
 
-    # Criar o gráfico
-    plt.figure(figsize=(10, 5))
-    plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
-    plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
-    plt.xlabel('Data')
-    plt.ylabel('Número de Reclamações')
-    plt.xticks(rotation=45)
-    plt.grid()
-    plt.tight_layout()
-
-    # Mostrar o gráfico no Streamlit
-    st.pyplot(plt)
-#### Estado
-
- # Criar o gráfico
-    plt.figure(figsize=(10, 5))
-    plt.bar(reclamacoes_por_estado.index, reclamacoes_por_estado.values, color='blue')
-    plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
-    plt.xlabel('Estado')
-    plt.ylabel('Número de Reclamações')
-    plt.xticks(rotation=45)
-    plt.grid(axis='y')  # Grade apenas nas linhas horizontais
-    plt.tight_layout()
+# Criar o gráfico de reclamações ao longo do tempo
+plt.figure(figsize=(10, 5))
+plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
+plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
+plt.xlabel('Data')
+plt.ylabel('Número de Reclamações')
+plt.xticks(rotation=45)
+plt.grid()
+plt.tight_layout()
 
 # Mostrar o gráfico no Streamlit
-    st.pyplot(plt)
+st.pyplot(plt)
 
+# Agrupar as reclamações por estado
+reclamacoes_por_estado = df.groupby('ESTADO')['DESCRICAO'].count()
 
+# Criar o gráfico de reclamações por estado
+plt.figure(figsize=(10, 5))
+plt.bar(reclamacoes_por_estado.index, reclamacoes_por_estado.values, color='blue')
+plt.title(f'Reclamações por Estado - {empresa}')
+plt.xlabel('Estado')
+plt.ylabel('Número de Reclamações')
+plt.xticks(rotation=45)
+plt.grid(axis='y')  # Grade apenas nas linhas horizontais
+plt.tight_layout()
 
+# Mostrar o gráfico no Streamlit
+st.pyplot(plt)
