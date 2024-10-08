@@ -6,23 +6,23 @@ import streamlit as st
 
 st.title('DASHBOARD DO RECLAME AQUI')
 
+# Seleção da empresa
 empresa = st.sidebar.selectbox('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
-
 
 # Dicionário de imagens
 images = {
-    'HAPVIDA': 'hapvida.png',
-    'NAGEM': 'nagem.png',
-    'IBYTE': 'ibyte.png'
+    'Hapvida': 'hapvida.png',
+    'Nagem': 'nagem.png',
+    'Ibyte': 'ibyte.png'
 }
 
-# Exibir as imagens correspondentes
-
-    st.sidebar.image('hapvida.png', caption='HAPVIDA', use_column_width=True)
-
-    st.sidebar.image('nagem.png', caption='NAGEM', use_column_width=True)
-
-    st.sidebar.image('ibyte.png', caption='IBYTE', use_column_width=True)
+# Exibir a imagem correspondente na sidebar
+if empresa:
+    image_file = images.get(empresa)
+    if image_file and os.path.isfile(image_file):
+        st.sidebar.image(image_file, caption=empresa.upper(), use_column_width=True)
+    else:
+        st.sidebar.error(f"Imagem não encontrada: {image_file}")
 
 
 # Carregar os arquivos CSV
