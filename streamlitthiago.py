@@ -21,16 +21,14 @@ images = {
     'IBYTE': 'ibyte.png'
 }
 
-# Exibir as imagens correspondentes
-if file_hapvida is not None:
-    st.image('hapvida.png', caption='HAPVIDA', use_column_width=True)
-
-if file_nagem is not None:
-    st.image('nagem.png', caption='NAGEM', use_column_width=True)
-
-if file_ibyte is not None:
-    st.image('ibyte.png', caption='IBYTE', use_column_width=True)
-
+for key, image_file in images.items():
+    # Verifica se o DataFrame correspondente não é None
+    if locals().get(f'file_{key.lower()}') is not None:
+        image_path = os.path.join(directory_path, image_file)
+        if os.path.isfile(image_path):
+            st.image(image_path, caption=key, use_column_width=True)
+        else:
+            st.error(f"Imagem não encontrada: {image_path}")
 
 # Dicionário para armazenar os DataFrames
 dfs = {
