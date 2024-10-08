@@ -16,7 +16,7 @@ file_ibyte = pd.read_csv('IBYTE_ETL.csv')
 print(file_hapvida)
 
 status = st.selectbox('SELECIONE O STATUS',
-                    ['','Não respondida', 'Respondida',
+                    ['Não respondida', 'Respondida',
                     'Resolvido', 'Em réplica','Não resolvido'],
                     index = 0)
 
