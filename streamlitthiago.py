@@ -22,7 +22,7 @@ status = st.selectbox('SELECIONE O STATUS',
 
 col1 , col2 = st.columns(2)
 with col1:
-    total = file_hapvida['STATUS'].value_counts().sum() + file_ibyte['STATUS'].value_counts().sum() + file_nagem.value_counts().sum()
+    total = file_hapvida['STATUS'].value_counts().sum() + file_ibyte['STATUS'].value_counts().sum() + file_nagem['STATUS'].value_counts().sum()
     st.metric(label='TOTAL RECLAMAÇÕES',
             value=total)
 with col2:
