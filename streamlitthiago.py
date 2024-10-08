@@ -6,7 +6,7 @@ import streamlit as st
 
 st.title('DASHBOARD DO RECLAME AQUI')
 
-empresa = st.sidebar('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
+empresa = st.sidebar.selectbox('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
 
 # Carregar os arquivos CSV
 file_hapvida = pd.read_csv('HAPVIDA_ETL.csv')
