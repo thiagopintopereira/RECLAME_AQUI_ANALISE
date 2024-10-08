@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy
+import streamlit
 
 # Carregar o arquivo CSV
 file_hapvida = r'C:\Users\thiag\OneDrive\Área de Trabalho\Pyhton\RECLAMEAQUI_HAPVIDA.csv'
