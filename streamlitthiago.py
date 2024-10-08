@@ -20,15 +20,26 @@ status = st.selectbox('SELECIONE O STATUS',
                     'Resolvido', 'Em réplica','Não resolvido'],
                     index = 0)
 
-col1 , col2 = st.columns(2)
+col1, col2 = st.columns(2)
+
+def total_reclamacoes(file):
+    return file['STATUS'].value_counts().sum()
+
 with col1:
-    total = file_hapvida['STATUS'].value_counts().sum() + file_ibyte['STATUS'].value_counts().sum() + file_nagem['STATUS'].value_counts().sum()
-    st.metric(label='TOTAL RECLAMAÇÕES',
-            value=total)
+    total = total_reclamacoes(file_hapvida) + total_reclamacoes(file_ibyte) + total_reclamacoes(file_nagem)
+    st.metric(label='TOTAL RECLAMAÇÕES', value=f"{total:,}")
+
 with col2:
-    temp = file_hapvida['STATUS'].value_counts().loc[status] + file_ibyte['STATUS'].value_counts().loc[status] + file_nagem['STATUS'].value_counts().loc[status]
-    st.metric(label= status.upper(),
-              value=temp)
+    if (status in file_hapvida['STATUS'].value_counts() and
+        status in file_ibyte['STATUS'].value_counts() and
+        status in file_nagem['STATUS'].value_counts()):
+        temp = (file_hapvida['STATUS'].value_counts().loc[status] +
+                file_ibyte['STATUS'].value_counts().loc[status] +
+                file_nagem['STATUS'].value_counts().loc[status])
+    else:
+        temp = 0  # Ou algum valor padrão
+
+    st.metric(label=status.upper(), value=temp)
 
 st.markdown('---')
 
