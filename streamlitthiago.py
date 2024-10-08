@@ -4,33 +4,58 @@ import numpy as np
 import scipy
 import streamlit as st
 
-st.title('DASHBOARD DE RECLAMAÇÕES NO RECLAME AQUI')
+st.title('DASHBOARD DO RECLAME AQUI')
 
-empresa = st.selectbox('SELECIONE A EMPRESA', ['','Hapvida', 'Ibyte', 'Nagem'])
+empresa = st.selectbox('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
 
-# Carregar o arquivo CSV
+# Carregar os arquivos CSV
 file_hapvida = pd.read_csv('HAPVIDA_ETL.csv')
 file_nagem = pd.read_csv('NAGEM_ETL.csv')
 file_ibyte = pd.read_csv('IBYTE_ETL.csv')
 
-print(file_hapvida)
+# Dicionário para armazenar os DataFrames
+dfs = {
+    'Hapvida': file_hapvida,
+    'Ibyte': file_ibyte,
+    'Nagem': file_nagem
+}
 
 status = st.selectbox('SELECIONE O STATUS',
-                    ['Não respondida', 'Respondida',
-                    'Resolvido', 'Em réplica','Não resolvido'],
-                    index = 0)
+                       ['Não respondida', 'Respondida',
+                        'Resolvido', 'Em réplica', 'Não resolvido'],
+                       index=0)
 
-col1 , col2 = st.columns(2)
-with col1:
-    total = file_hapvida['STATUS'].value_counts().sum() + file_ibyte['STATUS'].value_counts().sum() + file_nagem['STATUS'].value_counts().sum()
-    st.metric(label='TOTAL RECLAMAÇÕES',
-            value=total)
-with col2:
-    temp = file_hapvida['STATUS'].value_counts().loc[status] + file_ibyte['STATUS'].value_counts().loc[status] + file_nagem['STATUS'].value_counts().loc[status]
-    st.metric(label= status.upper(),
-              value=temp)
+# Calcular o total de reclamações
+total = sum(df['STATUS'].value_counts().sum() for df in dfs.values())
+st.metric(label='TOTAL RECLAMAÇÕES', value=total)
+
+# Calcular o total de reclamações pelo status selecionado
+temp = sum(df['STATUS'].value_counts().get(status, 0) for df in dfs.values())
+st.metric(label=status.upper(), value=temp)
 
 st.markdown('---')
 
+# Gráfico de reclamações ao longo do tempo
+if empresa:
+    df = dfs[empresa]
+    df['TEMPO'] = pd.to_datetime(df['TEMPO'])  # Converter para datetime
+
+  st.header(f'Reclamações ao longo do tempo - {empresa}')
+
+    # Agrupar as reclamações por data
+    reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
+
+    # Criar o gráfico
+    plt.figure(figsize=(10, 5))
+    plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
+    plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
+    plt.xlabel('Data')
+    plt.ylabel('Número de Reclamações')
+    plt.xticks(rotation=45)
+    plt.grid()
+    plt.tight_layout()
+
+    # Mostrar o gráfico no Streamlit
+    st.pyplot(plt)
 #### Series temporais Número de Reclamações
 
