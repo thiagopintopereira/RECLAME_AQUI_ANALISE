@@ -21,7 +21,7 @@ if file_hapvida is not None:
     st.image('hapvida.png', caption='HAPVIDA', use_column_width=True)
 
 if file_nagem is not None:
-    st.image('nagem.png, caption='NAGEM', use_column_width=True)
+    st.image('nagem.png', caption='NAGEM', use_column_width=True)
 
 if file_ibyte is not None:
     st.image('ibyte.png', caption='IBYTE', use_column_width=True)
