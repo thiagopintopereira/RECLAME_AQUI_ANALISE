@@ -82,17 +82,17 @@ if empresa:
 #### Estado
 
  # Criar o gráfico
-    plt2.figure(figsize=(10, 5))
-    plt2.bar(reclamacoes_por_estado.index, reclamacoes_por_estado.values, color='blue')
-    plt2.title(f'Reclamações ao Longo do Tempo - {empresa}')
-    plt2.xlabel('Estado')
-    plt2.ylabel('Número de Reclamações')
-    plt2.xticks(rotation=45)
-    plt2.grid(axis='y')  # Grade apenas nas linhas horizontais
-    plt2.tight_layout()
+    plt.figure(figsize=(10, 5))
+    plt.bar(reclamacoes_por_estado.index, reclamacoes_por_estado.values, color='blue')
+    plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
+    plt.xlabel('Estado')
+    plt.ylabel('Número de Reclamações')
+    plt.xticks(rotation=45)
+    plt.grid(axis='y')  # Grade apenas nas linhas horizontais
+    plt.tight_layout()
 
 # Mostrar o gráfico no Streamlit
-    st.pyplot(plt2)
+    st.pyplot(plt)
 
 
 
