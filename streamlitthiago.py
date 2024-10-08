@@ -8,7 +8,7 @@ st.title('DASHBOARD DE RECLAMAÇÕES NO RECLAME AQUI')
 
 
 empresa = st.selectbox('SELECIONE A EMPRESA',
-                        ['Hapvida','Ibyte', 'Nagem'])
+                        ['','Hapvida','Ibyte', 'Nagem'])
 
 # Carregar o arquivo CSV
 file_hapvida = pd.read_csv(r'C:\Users\thiag\OneDrive\Área de Trabalho\Pyhton\HAPVIDA_ETL.csv')
