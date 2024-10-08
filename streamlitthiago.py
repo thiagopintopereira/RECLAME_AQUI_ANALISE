@@ -8,6 +8,25 @@ st.title('DASHBOARD DO RECLAME AQUI')
 
 empresa = st.sidebar.selectbox('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
 
+
+# Dicionário de imagens
+images = {
+    'HAPVIDA': 'hapvida.png',
+    'NAGEM': 'nagem.png',
+    'IBYTE': 'ibyte.png'
+}
+
+# Exibir as imagens correspondentes
+if file_hapvida is not None:
+    st.image('hapvida.png', caption='HAPVIDA', use_column_width=True)
+
+if file_nagem is not None:
+    st.image('nagem.png, caption='NAGEM', use_column_width=True)
+
+if file_ibyte is not None:
+    st.image('ibyte.png', caption='IBYTE', use_column_width=True)
+
+
 # Carregar os arquivos CSV
 file_hapvida = pd.read_csv('HAPVIDA_ETL.csv')
 file_nagem = pd.read_csv('NAGEM_ETL.csv')
