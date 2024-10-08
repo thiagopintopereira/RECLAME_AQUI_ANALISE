@@ -6,40 +6,29 @@ import streamlit as st
 
 st.title('DASHBOARD DE RECLAMAÇÕES NO RECLAME AQUI')
 
-
-empresa = st.selectbox('SELECIONE A EMPRESA',
-                        ['','Hapvida','Ibyte', 'Nagem'])
+empresa = st.selectbox('SELECIONE A EMPRESA', ['Hapvida', 'Ibyte', 'Nagem'])
 
 # Carregar o arquivo CSV
 file_hapvida = pd.read_csv(r'C:\Users\thiag\OneDrive\Área de Trabalho\Pyhton\HAPVIDA_ETL.csv')
 file_nagem = pd.read_csv(r'C:\Users\thiag\OneDrive\Área de Trabalho\Pyhton\NAGEM_ETL.csv')
 file_ibyte = pd.read_csv(r'C:\Users\thiag\OneDrive\Área de Trabalho\Pyhton\IBYTE_ETL.csv')
 
+print(file_hapvida)
+
 status = st.selectbox('SELECIONE O STATUS',
                     ['Não respondida', 'Respondida',
                     'Resolvido', 'Em réplica','Não resolvido'],
                     index = 0)
 
-col1, col2 = st.columns(2)
-
-def total_reclamacoes(file):
-    return file['STATUS'].value_counts().sum()
-
+col1 , col2 = st.columns(2)
 with col1:
-    total = total_reclamacoes(file_hapvida) + total_reclamacoes(file_ibyte) + total_reclamacoes(file_nagem)
-    st.metric(label='TOTAL RECLAMAÇÕES', value=f"{total:,}")
-
+    total = file_hapvida['STATUS'].value_counts().sum() + file_ibyte['STATUS'].value_counts().sum() + file_nagem['STATUS'].value_counts().sum()
+    st.metric(label='TOTAL RECLAMAÇÕES',
+            value=total)
 with col2:
-    if (status in file_hapvida['STATUS'].value_counts() and
-        status in file_ibyte['STATUS'].value_counts() and
-        status in file_nagem['STATUS'].value_counts()):
-        temp = (file_hapvida['STATUS'].value_counts().loc[status] +
-                file_ibyte['STATUS'].value_counts().loc[status] +
-                file_nagem['STATUS'].value_counts().loc[status])
-    else:
-        temp = 0  # Ou algum valor padrão
-
-    st.metric(label=status.upper(), value=temp)
+    temp = file_hapvida['STATUS'].value_counts().loc[status] + file_ibyte['STATUS'].value_counts().loc[status] + file_nagem['STATUS'].value_counts().loc[status]
+    st.metric(label= status.upper(),
+              value=temp)
 
 st.markdown('---')
 
