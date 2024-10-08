@@ -36,6 +36,8 @@ st.metric(label=status.upper(), value=temp)
 st.markdown('---')
 
 # Gráfico de reclamações ao longo do tempo
+
+st.header(f'Reclamações ao longo do tempo - {empresa}')
 if empresa:
     df = dfs[empresa]
     df['TEMPO'] = pd.to_datetime(df['TEMPO'])  # Converter para datetime
