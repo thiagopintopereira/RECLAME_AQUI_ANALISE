@@ -6,7 +6,7 @@ import streamlit as st
 
 st.title('DASHBOARD DE RECLAMAÇÕES NO RECLAME AQUI')
 
-empresa = st.selectbox('SELECIONE A EMPRESA', ['Hapvida', 'Ibyte', 'Nagem'])
+empresa = st.selectbox('SELECIONE A EMPRESA', ['','Hapvida', 'Ibyte', 'Nagem'])
 
 # Carregar o arquivo CSV
 file_hapvida = pd.read_csv('HAPVIDA_ETL.csv')
@@ -16,7 +16,7 @@ file_ibyte = pd.read_csv('IBYTE_ETL.csv')
 print(file_hapvida)
 
 status = st.selectbox('SELECIONE O STATUS',
-                    ['Não respondida', 'Respondida',
+                    ['','Não respondida', 'Respondida',
                     'Resolvido', 'Em réplica','Não resolvido'],
                     index = 0)
 
