@@ -4,7 +4,7 @@ import numpy as np
 import scipy
 import streamlit as st
 
-st.title('DASHBOARD DE RECLAMAÇÕES NO RECLAME AQUI')
+st.title('DASHBOARD ANALISE RECLAME AQUI')
 
 
 empresa = st.selectbox('SELECIONE A EMPRESA',
