@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy
 import streamlit as st
+import os
 
 st.title('DASHBOARD DO RECLAME AQUI')
 
