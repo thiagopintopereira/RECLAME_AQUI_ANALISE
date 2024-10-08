@@ -23,13 +23,13 @@ images = {
 
 # Exibir as imagens correspondentes
 if file_hapvida is not None:
-    st.image(os.path.join(directory_path, images['HAPVIDA']), caption='HAPVIDA', use_column_width=True)
+    st.image('hapvida.png', caption='HAPVIDA', use_column_width=True)
 
 if file_nagem is not None:
-    st.image(os.path.join(directory_path, images['NAGEM']), caption='NAGEM', use_column_width=True)
+    st.image('nagem.png', caption='NAGEM', use_column_width=True)
 
 if file_ibyte is not None:
-    st.image(os.path.join(directory_path, images['IBYTE']), caption='IBYTE', use_column_width=True)
+    st.image('ibyte.png', caption='IBYTE', use_column_width=True)
 
 
 # Dicionário para armazenar os DataFrames
