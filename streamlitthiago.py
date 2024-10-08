@@ -40,7 +40,7 @@ if empresa:
     df = dfs[empresa]
     df['TEMPO'] = pd.to_datetime(df['TEMPO'])  # Converter para datetime
 
-  st.header(f'Reclamações ao longo do tempo - {empresa}')
+  
 
     # Agrupar as reclamações por data
     reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
