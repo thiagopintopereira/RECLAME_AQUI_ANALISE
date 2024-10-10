@@ -78,6 +78,8 @@ plt.tight_layout()
 # Mostrar o gráfico no Streamlit
 st.pyplot(plt)
 
+st.area_chart(reclamacoes_por_data)
+
 
 st.header(f'Reclamações por Estado - {empresa}')
 # Agrupar as reclamações por estado
