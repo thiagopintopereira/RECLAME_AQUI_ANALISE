@@ -8,7 +8,7 @@ import os
 st.title('DASHBOARD DO RECLAME AQUI')
 
 # Seleção da empresa
-empresa = st.sidebar.selectbox('SELECIONE A EMPRESA', ['', 'Hapvida', 'Ibyte', 'Nagem'])
+empresa = st.sidebar.selectbox('SELECIONE A EMPRESA', ['Hapvida', 'Ibyte', 'Nagem'])
 
 # Dicionário de imagens
 images = {
