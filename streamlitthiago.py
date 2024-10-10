@@ -58,27 +58,27 @@ st.markdown('---')
 st.header(f'Reclamações ao longo do tempo - {empresa}')
 if empresa:
     df = dfs[empresa]
-    df['TEMPO'] = pd.to_datetime(df['TEMPO'])  # Converter para datetime
+    df['TEMPO'] = pd.to_datetime(df['TEMPO'])  
 
   
 
-   # Agrupar as reclamações por data
+# Agrupar as reclamações por data
 reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
 
-# # Criar o gráfico de reclamações ao longo do tempo
-# plt.figure(figsize=(10, 5))
-# plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
-# plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
-# plt.xlabel('Data')
-# plt.ylabel('Número de Reclamações')
-# plt.xticks(rotation=45)
-# plt.grid()
-# plt.tight_layout()
+# Criar o gráfico de reclamações ao longo do tempo
+plt.figure(figsize=(10, 5))
+plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
+plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
+plt.xlabel('Data')
+plt.ylabel('Número de Reclamações')
+plt.xticks(rotation=45)
+plt.grid()
+plt.tight_layout()
 
-# # Mostrar o gráfico no Streamlit
-# st.pyplot(plt)
+# Mostrar o gráfico no Streamlit
+st.pyplot(plt)
 
-st.area_chart(reclamacoes_por_data,x="Data", y="eclamações ao Longo do Tempo")
+# st.area_chart(reclamacoes_por_data,x="Data", y="eclamações ao Longo do Tempo")
 
 
 st.header(f'Reclamações por Estado - {empresa}')
@@ -94,7 +94,7 @@ plt.title(f'Reclamações por Estado - {empresa}')
 plt.xlabel('Estado')
 plt.ylabel('Número de Reclamações')
 plt.xticks(rotation=45)
-plt.grid(axis='y')  # Grade apenas nas linhas horizontais
+plt.grid(axis='y')  
 plt.tight_layout()
 
 # Mostrar o gráfico no Streamlit
@@ -127,14 +127,14 @@ def count_caracteres(texto):
 # Contar a quantidade de caracteres por reclamação
 df['QUANTIDADE_CARACTERES'] = df['DESCRICAO'].apply(count_caracteres)
 
-# Criar o gráfico combinando histograma e KDE
+
 plt.figure(figsize=(10, 5))
 
 # Criar histograma
 plt.hist(df['QUANTIDADE_CARACTERES'], bins=30, color='blue', alpha=0.5, density=True, label='Histograma')
 
 # Criar a curva de densidade (KDE)
-df['QUANTIDADE_CARACTERES'].plot.kde(color='red', label='Curva de Densidade')
+df['QUANTIDADE_CARACTERES'].plot.kde(color='orange', label='Curva de Densidade')
 
 # Adicionar título e rótulos
 plt.title('Distribuição da Quantidade de Caracteres por Reclamação')
