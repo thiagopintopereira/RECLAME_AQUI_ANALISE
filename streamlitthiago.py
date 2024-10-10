@@ -107,8 +107,8 @@ reclamacoes_por_status = reclamacoes_por_status.sort_values(ascending=False)
 # Criar o gráfico de reclamações por estado
 plt.figure(figsize=(10, 5))
 plt.bar(reclamacoes_por_status.index, reclamacoes_por_status.values, color='blue')
-plt.title(f'Reclamações por Estado - {empresa}')
-plt.xlabel('Estado')
+plt.title(f'Reclamações por Status - {empresa}')
+plt.xlabel('Status')
 plt.ylabel('Número de Reclamações')
 plt.xticks(rotation=45)
 plt.grid(axis='y')  # Grade apenas nas linhas horizontais
