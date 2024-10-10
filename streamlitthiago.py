@@ -125,24 +125,21 @@ def count_caracteres(texto):
 # Contar a quantidade de caracteres por reclamação
 df['QUANTIDADE_CARACTERES'] = df['DESCRICAO'].apply(count_caracteres)
 
-# Criar o histograma
+# Criar o gráfico combinando histograma e KDE
 plt.figure(figsize=(10, 5))
-plt.hist(df['QUANTIDADE_CARACTERES'], bins=30, color='blue', alpha=0.7, density=True)
+
+# Criar histograma
+plt.hist(df['QUANTIDADE_CARACTERES'], bins=30, color='blue', alpha=0.5, density=True, label='Histograma')
+
+# Criar a curva de densidade (KDE)
+df['QUANTIDADE_CARACTERES'].plot.kde(color='red', label='Curva de Densidade')
+
+# Adicionar título e rótulos
 plt.title('Distribuição da Quantidade de Caracteres por Reclamação')
 plt.xlabel('Quantidade de Caracteres')
 plt.ylabel('Densidade')
+plt.legend()
 plt.grid(axis='y')
 
-# Mostrar o histograma no Streamlit
-st.pyplot(plt)
-
-# Criar a curva de densidade (KDE)
-plt.figure(figsize=(10, 5))
-df['QUANTIDADE_CARACTERES'].plot.kde(color='blue')
-plt.title('Curva de Densidade da Quantidade de Caracteres por Reclamação')
-plt.xlabel('Quantidade de Caracteres')
-plt.ylabel('Densidade')
-plt.grid(axis='y')
-
-# Mostrar a curva de densidade no Streamlit
+# Mostrar o gráfico no Streamlit
 st.pyplot(plt)
