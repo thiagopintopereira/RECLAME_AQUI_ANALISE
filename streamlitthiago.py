@@ -65,20 +65,20 @@ if empresa:
    # Agrupar as reclamações por data
 reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
 
-# Criar o gráfico de reclamações ao longo do tempo
-plt.figure(figsize=(10, 5))
-plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
-plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
-plt.xlabel('Data')
-plt.ylabel('Número de Reclamações')
-plt.xticks(rotation=45)
-plt.grid()
-plt.tight_layout()
+# # Criar o gráfico de reclamações ao longo do tempo
+# plt.figure(figsize=(10, 5))
+# plt.plot(reclamacoes_por_data.index, reclamacoes_por_data.values, marker='o')
+# plt.title(f'Reclamações ao Longo do Tempo - {empresa}')
+# plt.xlabel('Data')
+# plt.ylabel('Número de Reclamações')
+# plt.xticks(rotation=45)
+# plt.grid()
+# plt.tight_layout()
 
-# Mostrar o gráfico no Streamlit
-st.pyplot(plt)
+# # Mostrar o gráfico no Streamlit
+# st.pyplot(plt)
 
-st.area_chart(reclamacoes_por_data)
+st.area_chart(reclamacoes_por_data,x="Data", y="eclamações ao Longo do Tempo", color="blue", stack="center")
 
 
 st.header(f'Reclamações por Estado - {empresa}')
