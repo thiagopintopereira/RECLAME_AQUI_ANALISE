@@ -97,3 +97,22 @@ plt.tight_layout()
 
 # Mostrar o gráfico no Streamlit
 st.pyplot(plt)
+
+st.header(f'Status Reclamações - {empresa}')
+# Agrupar as reclamações por estado
+reclamacoes_por_status = df.groupby('STATUS')['DESCRICAO'].count()
+# Ordenar do maior para o menor
+reclamacoes_por_status = reclamacoes_por_status.sort_values(ascending=False)
+
+# Criar o gráfico de reclamações por estado
+plt.figure(figsize=(10, 5))
+plt.bar(reclamacoes_por_status.index, reclamacoes_por_status.values, color='blue')
+plt.title(f'Reclamações por Estado - {empresa}')
+plt.xlabel('Estado')
+plt.ylabel('Número de Reclamações')
+plt.xticks(rotation=45)
+plt.grid(axis='y')  # Grade apenas nas linhas horizontais
+plt.tight_layout()
+
+# Mostrar o gráfico no Streamlit
+st.plotly_chart(plt)
