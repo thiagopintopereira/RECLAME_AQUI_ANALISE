@@ -115,4 +115,4 @@ plt.grid(axis='y')  # Grade apenas nas linhas horizontais
 plt.tight_layout()
 
 # Mostrar o gráfico no Streamlit
-st.plotly_chart(plt)
+st.pyplot(plt)
