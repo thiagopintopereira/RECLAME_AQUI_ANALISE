@@ -78,7 +78,7 @@ reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
 # # Mostrar o gráfico no Streamlit
 # st.pyplot(plt)
 
-st.area_chart(reclamacoes_por_data,x="Data", y="eclamações ao Longo do Tempo", color="blue", stack="center")
+st.area_chart(reclamacoes_por_data,x="Data", y="eclamações ao Longo do Tempo")
 
 
 st.header(f'Reclamações por Estado - {empresa}')
