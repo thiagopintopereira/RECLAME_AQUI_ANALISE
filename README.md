@@ -17,6 +17,7 @@ Para rodar este projeto localmente, siga os seguintes passos:
 Clone o repositório:
 
 git clone (https://github.com/thiagopintopereira/ReclameAquiEstudo)
+
 Navegue até o diretório do projeto:
 
 cd ReclameAquiEstudo
