@@ -31,4 +31,4 @@ pip install -r requirements.txt
 Como Executar o Projeto
 Para executar o dashboard localmente, basta rodar o comando abaixo:
 
-streamlit run streamlit_app.py
+streamlit run streamlitthiago.py
