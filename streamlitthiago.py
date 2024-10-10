@@ -60,11 +60,12 @@ if empresa:
     df = dfs[empresa]
     df['TEMPO'] = pd.to_datetime(df['TEMPO'])  
 
- # Criar uma lista de cores (uma cor para cada barra)
-colors = plt.cm.viridis(np.linspace(0, 1, len(reclamacoes_por_status))) 
+
 
 # Agrupar as reclamações por data
 reclamacoes_por_data = df.groupby(df['TEMPO'].dt.date)['DESCRICAO'].count()
+
+
 
 # Criar o gráfico de reclamações ao longo do tempo
 plt.figure(figsize=(10, 5))
@@ -88,6 +89,9 @@ reclamacoes_por_estado = df.groupby('ESTADO')['DESCRICAO'].count()
 # Ordenar do maior para o menor
 reclamacoes_por_estado = reclamacoes_por_estado.sort_values(ascending=False)
 
+ # Criar uma lista de cores (uma cor para cada barra)
+colors = plt.cm.viridis(np.linspace(0, 1, len(reclamacoes_por_estado))) 
+
 # Criar o gráfico de reclamações por estado
 plt.figure(figsize=(10, 5))
 plt.bar(reclamacoes_por_estado.index, reclamacoes_por_estado.values, color=colors)
@@ -106,7 +110,8 @@ st.header(f'Status Reclamações - {empresa}')
 reclamacoes_por_status = df.groupby('STATUS')['DESCRICAO'].count()
 # Ordenar do maior para o menor
 reclamacoes_por_status = reclamacoes_por_status.sort_values(ascending=False)
-
+ # Criar uma lista de cores (uma cor para cada barra)
+colors = plt.cm.viridis(np.linspace(0, 1, len(reclamacoes_por_status))) 
 
 # Criar o gráfico de reclamações por status
 plt.figure(figsize=(10, 5))
