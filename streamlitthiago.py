@@ -82,6 +82,8 @@ st.pyplot(plt)
 st.header(f'Reclamações por Estado - {empresa}')
 # Agrupar as reclamações por estado
 reclamacoes_por_estado = df.groupby('ESTADO')['DESCRICAO'].count()
+# Ordenar do maior para o menor
+reclamacoes_por_estado = reclamacoes_por_estado.sort_values(ascending=False)
 
 # Criar o gráfico de reclamações por estado
 plt.figure(figsize=(10, 5))
