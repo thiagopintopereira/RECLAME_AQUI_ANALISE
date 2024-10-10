@@ -78,6 +78,8 @@ plt.tight_layout()
 # Mostrar o gráfico no Streamlit
 st.pyplot(plt)
 
+
+st.header(f'Reclamações por Estado - {empresa}')
 # Agrupar as reclamações por estado
 reclamacoes_por_estado = df.groupby('ESTADO')['DESCRICAO'].count()
 
